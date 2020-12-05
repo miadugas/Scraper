@@ -17,6 +17,7 @@ csv_writer.writerow(['Stock Name', 'Current Price', 'Previous Close', 'Open', 'B
 
 
 for url in urls:
+    stock = []
     html_page = requests.get(url, headers=headers)
     # pass the parser, lxml is the fastest so I'm using that
     soup = BeautifulSoup(html_page.content, 'lxml')
@@ -31,8 +32,11 @@ for url in urls:
     stock_title = header_info.find("h1").get_text()
     current_price = header_info.find("div", class_="My(6px) Pos(r) smartphone_Mt(6px)").find("span").get_text()
 
-    print(stock_title)
-    print(current_price)
+    stock.append(stock_title)
+    stock.append(current_price)
+
+    # print(stock_title)
+    # print(current_price)
 
     table_info = soup.find_all("div", class_="D(ib) W(1/2) Bxz(bb) Pend(12px) Va(t) ie-7_D(i) smartphone_D(b) smartphone_W(100%) smartphone_Pend(0px) smartphone_BdY smartphone_Bdc($seperatorColor)")[0].find_all("tr")
 
@@ -40,8 +44,13 @@ for url in urls:
         heading = table_info[i].find_all("td")[0].get_text()
         # print()
         value = table_info[i].find_all("td")[1].get_text()
+        stock.append(value)
 
-        print(heading + " : " + value)
-    
-    # sleep for 7 seconds before next request
-    time.sleep(7)
+        # print(heading + " : " + value)
+
+    csv_writer.writerow(stock)
+    # sleep for 5 seconds before next request
+    time.sleep(5)
+
+# once file created close it
+csv_file.close()
