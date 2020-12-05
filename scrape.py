@@ -6,14 +6,16 @@ import time
 import csv
 # Import send function
 import send_mail
+# to rename the csv daily
+from datetime import date
 
 urls = ["https://finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch", "https://finance.yahoo.com/quote/FB?p=FB", "https://finance.yahoo.com/quote/TWTR?p=TWTR&.tsrc=fin-srch", "https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch"]
 
 # putting this in to make it appear that a browser is making the query's and not a bot :p
 headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36' }
 
-
-csv_file = open("scrape.csv", "w")
+today = str(date.today()) + ".csv"
+csv_file = open(today, "w")
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['Stock Name', 'Current Price', 'Previous Close', 'Open', 'Bid', 'Ask', 'Day Range', '52 Week Range', 'Volume', 'Avg. Volume'])
 
@@ -57,3 +59,5 @@ for url in urls:
 # once file created close it
 csv_file.close()
 
+
+send_mail.send(filename=today)

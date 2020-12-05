@@ -6,7 +6,7 @@ from email.mime.base import MIMEBase
 from email import encoders
  
 # turned into a function to import into scrape.py
-def send():
+def send(filename):
     from_add = "skoden0909@gmail.com"
     to_add = "msmiadugas@gmail.com"
     subject = "Finance Stock Report"
@@ -16,15 +16,15 @@ def send():
     msg["To"] = to_add
     msg["Subject"] = subject
 
-    body = "<b>Heya! Sending mail throigh Python!</b>"
+    body = "<b>Today's Report Attached</b>"
     msg.attach(MIMEText(body, "html"))
 
-    my_file = open("scrape.csv", "rb")
+    my_file = open(filename, "rb")
 
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((my_file).read())
     encoders.encode_base64(part)
-    part.add_header('Content-Disposition', 'attachment; filename= ' + "scrape.csv")
+    part.add_header('Content-Disposition', 'attachment; filename= ' + filename)
     msg.attach(part)
 
     message = msg.as_string()
