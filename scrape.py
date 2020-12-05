@@ -13,3 +13,7 @@ soup = BeautifulSoup(html_page.content, 'lxml')
 # If I want to grab the page title
 # print(soup.title)
 
+# extract page title and drop the tags
+# title = soup.find("title").get_text()
+# print(title)
+
