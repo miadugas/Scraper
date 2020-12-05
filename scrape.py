@@ -22,3 +22,12 @@ current_price = header_info.find("div", class_="My(6px) Pos(r) smartphone_Mt(6px
 
 print(stock_title)
 print(current_price)
+
+table_info = soup.find_all("div", class_="D(ib) W(1/2) Bxz(bb) Pend(12px) Va(t) ie-7_D(i) smartphone_D(b) smartphone_W(100%) smartphone_Pend(0px) smartphone_BdY smartphone_Bdc($seperatorColor)")[0].find_all("tr")
+
+for i in range(0,8):
+    heading = table_info[i].find_all("td")[0].get_text()
+    # print()
+    value = table_info[i].find_all("td")[1].get_text()
+
+    print(heading + " : " + value)
