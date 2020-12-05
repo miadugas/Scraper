@@ -10,6 +10,12 @@ urls = ["https://finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch", "https://f
 # putting this in to make it appear that a browser is making the query's and not a bot :p
 headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36' }
 
+
+csv_file = open("scrape.csv", "w")
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['Stock Name', 'Current Price', 'Previous Close', 'Open', 'Bid', 'Ask', 'Day Range', '52 Week Range', 'Volume', 'Avg. Volume'])
+
+
 for url in urls:
     html_page = requests.get(url, headers=headers)
     # pass the parser, lxml is the fastest so I'm using that
