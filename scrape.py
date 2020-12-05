@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import time
 # csv import
 import csv
+# Import send function
+import send_mail
 
 urls = ["https://finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch", "https://finance.yahoo.com/quote/FB?p=FB", "https://finance.yahoo.com/quote/TWTR?p=TWTR&.tsrc=fin-srch", "https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch"]
 
@@ -54,3 +56,4 @@ for url in urls:
 
 # once file created close it
 csv_file.close()
+
