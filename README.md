@@ -9,11 +9,17 @@ To use this scrapper:
 - Fork or download the zip file.
 - Open the folder contents in your IDE.
 - 3 values require your personal information in the send_mail.py file
+
     1.) Line 11 | from email address.
+
     2.) Line 12 | to email address.
+
     3.) Line 40 | add your mail server password.
 
+
 - 2 values in the scrape.py file
+
     1.) The URL or URL's to scrape.
+
     2.) Line 17 | Your personal user agent ; https://www.whatismybrowser.com/detect/what-is-my-user-agent will tell you your personal value.
 
