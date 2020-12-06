@@ -1,4 +1,4 @@
-# Scrapper
+# Python Scrapper
 
 Automated Python Web Scraping Bot built with Beautiful Soup with the ablity to send CSV of extracted info to an email address. The CSV will be named for the day created so that an archive can be kept of the scrapped data.
 
