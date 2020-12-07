@@ -29,3 +29,8 @@ To use this scrapper:
 
 - Once your values are in place, run scrape.py in the command line
 
+
+License
+Distributed under the MIT license.
+
+See LICENSE for more information.
